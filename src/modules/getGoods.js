@@ -1,10 +1,33 @@
 const getGoods = ()=>{
 	
 	const links = document.querySelectorAll('.navigation-link');
-	//console.log(links)
 	
+	
+	if(window.location.pathname === "/index.html")
+	{
+		
+		const viewAllBtn = document.querySelector('a.more');
+
+		//console.dir(viewAllBtn);
+		
+		
+		
+		viewAllBtn.addEventListener('click', ((event) =>{
+			event.preventDefault()
+			fetch('https://wild-a7747-default-rtdb.firebaseio.com/db.json')
+			.then( (res)=> res.json())
+			.then((data) =>{
+			
+				localStorage.setItem('goods', JSON.stringify(data));
+				window.location.href = "/goods.html"
+			})
+				
+
+		}))
+	}
+
 	const renderGoods = (goods) => {
-		console.log(goods);
+		//console.log(goods);
 		const goodsContainer = document.querySelector('.long-goods-list');
 		//console.dir(goodsContainer);
 		goodsContainer.innerHTML ='';
@@ -81,6 +104,10 @@ const getGoods = ()=>{
 		renderGoods(JSON.parse(localStorage.getItem('goods')));
 	}
 	
+
+
+
+
 }
 
 export default getGoods;
