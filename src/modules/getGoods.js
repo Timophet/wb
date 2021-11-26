@@ -52,9 +52,9 @@ const getGoods = ()=>{
 			localStorage.setItem('goods', JSON.stringify(array));
 			//console.log(data);
 			//return data;
-			if(window.location.pathname !== "./goods.html") {
+			if(window.location.pathname !== "/goods.html") {
 				
-				window.location.href = "./goods.html"
+				window.location.href = "../goods.html"
 				
 			}
 			else
@@ -80,7 +80,7 @@ const getGoods = ()=>{
 		
 	})
 	
-	if(localStorage.getItem('goods') && window.location.pathname === "./goods.html"){
+	if(localStorage.getItem('goods') && window.location.pathname === "/goods.html"){
 
 		renderGoods(JSON.parse(localStorage.getItem('goods')));
 	}
